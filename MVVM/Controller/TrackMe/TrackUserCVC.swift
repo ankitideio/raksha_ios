@@ -8,7 +8,7 @@
 import UIKit
 
 class TrackUserCVC: UICollectionViewCell {
-    @IBOutlet weak var btnCross: UILabel!
+    @IBOutlet var btnCross: UIButton!
     @IBOutlet weak var imgVwProfile: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     

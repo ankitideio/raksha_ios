@@ -53,8 +53,6 @@ extension FriendListVC:UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     @objc func actionThreeDot(sender:UIButton){
-        print("clicked")
-        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CommonPopoverVC") as! CommonPopoverVC
            vc.modalPresentationStyle = .popover
         vc.preferredContentSize = CGSize(width: 80, height: 80)
@@ -64,9 +62,7 @@ extension FriendListVC:UITableViewDelegate,UITableViewDataSource{
                popoverController.permittedArrowDirections = .up
                popoverController.delegate = self
            }
-           
            self.present(vc, animated: true)
-
     }
 
     

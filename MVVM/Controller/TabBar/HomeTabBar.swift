@@ -8,11 +8,11 @@
 import UIKit
 
 class HomeTabBar: UITabBarController, UITabBarControllerDelegate {
-
+    @IBOutlet var tabBarView: UITabBar!
+    
     // MARK: - VARIABLE
     
     private let middleButton = UIButton()
-    
     // MARK: - LIFE CYCLE METHOD
     
     override func viewDidLoad() {
@@ -74,6 +74,7 @@ class HomeTabBar: UITabBarController, UITabBarControllerDelegate {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item \(item.tag)")
+        Store.selectTabItem = item.tag
     }
 }
 

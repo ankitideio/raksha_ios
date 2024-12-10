@@ -20,10 +20,17 @@ class TipsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    
+        swipeLeft()
     }
-    
+    func swipeLeft(){
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+                  swipeRight.direction = .right
+                  view.addGestureRecognizer(swipeRight)
+    }
+    @objc func handleSwipe() {
+        navigationController?.popViewController(animated: true)
+        
+    }
     //MARK: - Actions
     
     @IBAction func actionBack(_ sender: UIButton) {

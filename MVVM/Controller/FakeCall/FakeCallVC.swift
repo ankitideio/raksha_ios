@@ -30,8 +30,8 @@ class FakeCallVC: UIViewController {
             tabBarController.setMiddleButtonHidden(true)
         }
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        vc.callBack = {
-            if let tabBarController = self.tabBarController as? HomeTabBar {
+        vc.callBack = {[weak self] in
+            if let tabBarController = self?.tabBarController as? HomeTabBar {
                 tabBarController.setMiddleButtonHidden(false)
             }
         }
@@ -44,8 +44,8 @@ class FakeCallVC: UIViewController {
             tabBarController.setMiddleButtonHidden(true)
         }
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TipsVC") as! TipsVC
-        vc.callBack = {
-            if let tabBarController = self.tabBarController as? HomeTabBar {
+        vc.callBack = {[weak self] in
+            if let tabBarController = self?.tabBarController as? HomeTabBar {
                 tabBarController.setMiddleButtonHidden(false)
             }
         }

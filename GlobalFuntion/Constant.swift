@@ -9,7 +9,6 @@ import Foundation
 
 //MARK: - STORE FILE
 enum DefaultKeys: String{
-   
     case authKey
     case userDetails
     case selectTabItem

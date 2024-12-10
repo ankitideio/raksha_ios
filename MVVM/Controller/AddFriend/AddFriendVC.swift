@@ -51,7 +51,16 @@ class AddFriendVC: UIViewController {
         tblVwList.dataSource = self
         tblVwList.reloadData()
         self.updateTableViewHeight()
-     
+        swipeLeft()
+    }
+    func swipeLeft(){
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+                  swipeRight.direction = .right
+                  view.addGestureRecognizer(swipeRight)
+    }
+    @objc func handleSwipe() {
+        navigationController?.popViewController(animated: true)
+        
     }
    
     private func addCallFriendTextField() {
@@ -99,7 +108,6 @@ class AddFriendVC: UIViewController {
     private func updateTableViewHeight() {
         DispatchQueue.main.async {
             self.heightTblVw.constant = self.tblVwList.contentSize.height
-            print(self.heightTblVw.constant)
             self.view.layoutIfNeeded()
         }
     }

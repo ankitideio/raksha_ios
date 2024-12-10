@@ -63,7 +63,8 @@ class EducationVC: UIViewController {
             tabBarController.setMiddleButtonHidden(true)
         }
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        vc.callBack = {
+        vc.callBack = {[weak self] in
+            guard let self = self else { return }
             if let tabBarController = self.tabBarController as? HomeTabBar {
                 tabBarController.setMiddleButtonHidden(false)
             }
@@ -77,7 +78,8 @@ class EducationVC: UIViewController {
             tabBarController.setMiddleButtonHidden(true)
         }
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TipsVC") as! TipsVC
-        vc.callBack = {
+        vc.callBack = {[weak self] in
+            guard let self = self else { return }
             if let tabBarController = self.tabBarController as? HomeTabBar {
                 tabBarController.setMiddleButtonHidden(false)
             }
@@ -115,7 +117,8 @@ extension EducationVC:UITableViewDelegate,UITableViewDataSource{
                 tabBarController.setMiddleButtonHidden(true)
             }
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "RightAndLawsVC") as! RightAndLawsVC
-            vc.callBack = {
+            vc.callBack = {[weak self] in
+                guard let self = self else { return }
                 if let tabBarController = self.tabBarController as? HomeTabBar {
                     tabBarController.setMiddleButtonHidden(false)
                 }
@@ -127,7 +130,8 @@ extension EducationVC:UITableViewDelegate,UITableViewDataSource{
                 tabBarController.setMiddleButtonHidden(true)
             }
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelfDefenceVC") as! SelfDefenceVC
-            vc.callBack = {
+            vc.callBack = {[weak self] in
+                guard let self = self else { return }
                 if let tabBarController = self.tabBarController as? HomeTabBar {
                     tabBarController.setMiddleButtonHidden(false)
                 }

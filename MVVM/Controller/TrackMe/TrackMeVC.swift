@@ -21,14 +21,30 @@ class TrackMeVC: UIViewController {
     
     var arrTime = ["15 minutes","1 hour","8 hours"]
     var callBack:(()->())?
-    
+    var selectedTimeIndexes = [Bool](repeating: false, count: 3)
     //MARK: - Life Cycle Method
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DismissKeyboardOnTap()
+        uiSet()
     }
     
+    func uiSet(){
+        swipeLeft()
+        DismissKeyboardOnTap()
+        selectedTimeIndexes[0] = true
+            collVwTrackTime.reloadData()
+    
+    }
+    func swipeLeft(){
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+                  swipeRight.direction = .right
+                  view.addGestureRecognizer(swipeRight)
+    }
+    @objc func handleSwipe() {
+        navigationController?.popViewController(animated: true)
+        
+    }
     //MARK: - Action
     
     @IBAction func actionBack(_ sender: UIButton) {
@@ -55,42 +71,49 @@ extension TrackMeVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollec
         if collectionView == collVwTrackTime{
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrackTimeCVC", for: indexPath) as! TrackTimeCVC
             cell.lblTime.text = arrTime[indexPath.row]
-            if indexPath.row == 0{
+            if selectedTimeIndexes[indexPath.row] {
                 cell.vwBackground.backgroundColor = UIColor.darkGreen
                 cell.lblTime.textColor = UIColor.white
-            }else{
-                cell.vwBackground.backgroundColor = UIColor.darkGreen.withAlphaComponent(0.05)
-                cell.lblTime.textColor = UIColor.black
+            } else {
+                cell.vwBackground.backgroundColor = .white
+                cell.lblTime.textColor = UIColor(hex: "#B0BEC5")
             }
             return cell
         }else{
             let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrackUserCVC", for: indexPath) as! TrackUserCVC
-           
-          
+            cell.btnCross.tag = indexPath.row
+            cell.btnCross.addTarget(self, action: #selector(actionCross), for: .touchUpInside)
             return cell
         }
-       
     }
-    
+    @objc func actionCross(sender:UIButton){
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == collVwTrackTime {
+            for i in 0..<selectedTimeIndexes.count {
+                selectedTimeIndexes[i] = false
+            }
+            selectedTimeIndexes[indexPath.row] = true
+            collectionView.reloadData()
+        }
+    }
+
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = arrTime[indexPath.row]
         if collectionView == collVwTrackTime{
-            let font = UIFont.systemFont(ofSize: 16)
-            let textWidth = text.width(withFont: font)
-            let padding: CGFloat = 26
-            let itemWidth = textWidth + padding
-            return CGSize(width: itemWidth, height: 40)
+            return CGSize(width: collectionView.frame.size.width / 3.25, height: 40)
         }else{
             return CGSize(width: 90, height: 90)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 10
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == collVwTrackTime{
-            return 40
+            return 10
         }else{
             return 10
         }

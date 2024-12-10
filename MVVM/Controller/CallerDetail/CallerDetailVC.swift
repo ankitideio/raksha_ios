@@ -11,6 +11,7 @@ class CallerDetailVC: UIViewController {
     
     //MARK: - Outlets
     
+    @IBOutlet var imgVwUser: UIImageView!
     @IBOutlet weak var collVwTimer: UICollectionView!
     @IBOutlet weak var txtFldMobile: UITextField!
     @IBOutlet weak var txtFldName: UITextField!
@@ -18,26 +19,47 @@ class CallerDetailVC: UIViewController {
     //MARK: - Variables
     
     private  var arrTime = ["Now","1 min","5 min"]
+    var callBack:(()->())?
     
+    private var imagePicker = ImagePicker()
     //MARK: - Life Cycle Method
     
     override func viewDidLoad() {
         super.viewDidLoad()
         DismissKeyboardOnTap()
-     
+        swipeLeft()
+    }
+    func swipeLeft(){
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+                  swipeRight.direction = .right
+                  view.addGestureRecognizer(swipeRight)
+    }
+    @objc func handleSwipe() {
+        navigationController?.popViewController(animated: true)
     }
     
     //MARK: - Actions
+    @IBAction func actionSave(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+        callBack?()
+        
+    }
     
     @IBAction func actionBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func actionGallary(_ sender: UIButton) {
-        
+        imagePicker.pickGalleryImage(self) { [weak self] image in
+            guard let self = self else { return }
+            self.imgVwUser.image = image
+                }
     }
     
     @IBAction func actionCamera(_ sender: UIButton) {
-        
+        imagePicker.pickCameraImage(self) { [weak self] image in
+            guard let self = self else { return }
+            self.imgVwUser.image = image
+                }
     }
     
     @IBAction func actionAvtar(_ sender: UIButton) {

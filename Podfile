@@ -10,5 +10,5 @@ target 'Raksha' do
    pod 'IQKeyboardManagerSwift'
    pod 'TOCropViewController'
    pod 'MaterialComponents/TextFields'
-   
+   pod 'OTPFieldView'
 end

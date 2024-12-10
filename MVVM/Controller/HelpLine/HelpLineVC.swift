@@ -18,10 +18,18 @@ class HelpLineVC: UIViewController {
     //MARK: - Variables
     
     var arrEducation: [EducationItem] = [
-        EducationItem(title: "File a Complaint", description: "Submit incidents directly and securely to authorities for immediate action.", imageName: "helpline1"),
-        EducationItem(title: "Check Status", description: "Track the progress of your previously filed complaints in real-time.", imageName: "helpline2"),
-        EducationItem(title: "Nearby Police Station", description: "Locate and contact the nearest police station instantly.", imageName: "helpline3"),
-        EducationItem(title: "National Helpline", description: "Quickly access the national helpline number for immediate assistance.", imageName: "helpline4")
+        EducationItem(title: "File a Complaint",
+                      description: "Submit incidents directly and securely to authorities for immediate action.",
+                      imageName: "helpline1"),
+        EducationItem(title: "Check Status",
+                      description: "Track the progress of your previously filed complaints in real-time.",
+                      imageName: "helpline2"),
+        EducationItem(title: "Nearby Police Station",
+                      description: "Locate and contact the nearest police station instantly.",
+                      imageName: "helpline3"),
+        EducationItem(title: "National Helpline",
+                      description: "Quickly access the national helpline number for immediate assistance.",
+                      imageName: "helpline4")
     ]
     
     //MARK: - Life Cycle Method¯
@@ -47,7 +55,8 @@ class HelpLineVC: UIViewController {
             tabBarController.setMiddleButtonHidden(true)
         }
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        vc.callBack = {
+        vc.callBack = { [weak self] in
+            guard let self = self else { return }
             if let tabBarController = self.tabBarController as? HomeTabBar {
                 tabBarController.setMiddleButtonHidden(false)
             }
@@ -61,7 +70,8 @@ class HelpLineVC: UIViewController {
             tabBarController.setMiddleButtonHidden(true)
         }
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TipsVC") as! TipsVC
-        vc.callBack = {
+        vc.callBack = {[weak self] in
+            guard let self = self else { return }
             if let tabBarController = self.tabBarController as? HomeTabBar {
                 tabBarController.setMiddleButtonHidden(false)
             }

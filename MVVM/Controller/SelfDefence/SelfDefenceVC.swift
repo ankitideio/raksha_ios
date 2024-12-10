@@ -22,10 +22,12 @@ class SelfDefenceVC: UIViewController {
     
     //MARK: - Variables
     
-    var arrDefence:[DefenceList] = [DefenceList(title: "Hammer Strike",description: "Using your car keys is one of the easiest ways to defend yourself.Don’t use your fingernails, because you’re more at risk to injure your hands.",img: "defence1"),
-                                    DefenceList(title: "Groin kick",description: "If someone is coming at you from the front, a groin kick may deliver enough force to paralyze your attacker, making your escape possible.",img: "defence2"),
-                                    DefenceList(title: " Heel palm strike",description: "This move can cause damage to the nose or throat. To execute, get in front of your attacker as much as is possible.An open palm to the ears can be very disorienting.",img: "defence3"),
-                                    DefenceList(title: "Elbow Strike",description: "If your attacker is in close range and you’re unable to get enough momentum to throw a strong punch or kick, use your elbows.",img: "defence4")]
+    private let arrDefence: [DefenceList] = [
+            .init(title: "Hammer Strike", description: "Using your car keys is one of the easiest ways to defend yourself. Don’t use your fingernails, because you’re more at risk to injure your hands.", img: "defence1"),
+            .init(title: "Groin kick", description: "If someone is coming at you from the front, a groin kick may deliver enough force to paralyze your attacker, making your escape possible.", img: "defence2"),
+            .init(title: "Heel palm strike", description: "This move can cause damage to the nose or throat. To execute, get in front of your attacker as much as possible. An open palm to the ears can be very disorienting.", img: "defence3"),
+            .init(title: "Elbow Strike", description: "If your attacker is in close range and you’re unable to get enough momentum to throw a strong punch or kick, use your elbows.", img: "defence4")
+        ]
     
     var callBack:(()->())?
     
@@ -33,15 +35,24 @@ class SelfDefenceVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-     
+        swipeLeft()
     }
-    
+    func swipeLeft(){
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+                  swipeRight.direction = .right
+                  view.addGestureRecognizer(swipeRight)
+    }
+    @objc func handleSwipe() {
+       
+        SceneDelegate().tabBarHomeRoot()
+        callBack?()
+        
+    }
     //MARK: - Action
     
     @IBAction func actionBack(_ sender: UIButton) {
+        SceneDelegate().tabBarHomeRoot()
         callBack?()
-        self.navigationController?.popViewController(animated: true)
        
     }
     
@@ -69,29 +80,8 @@ extension SelfDefenceVC: UITableViewDelegate,UITableViewDataSource{
         cell.imgVwProfile.image = UIImage(named: arrDefence[indexPath.row].img ?? "")
         cell.lblTitle.text = arrDefence[indexPath.row].title ?? ""
         let text = arrDefence[indexPath.row].description ?? ""
-        cell.lblDescription.attributedText = addDotToEachLine(text: text)
+        cell.lblDescription.attributedText = text.createBulletPointText()
         return cell
     }
-    
-    //MARK: - Function add dot
-    
-    func addDotToEachLine(text: String) -> NSAttributedString {
-           let lines = text.components(separatedBy: "\n")
-           let bullet = "• "
-           let attributedString = NSMutableAttributedString()
-           
-           for (index, line) in lines.enumerated() {
-               if !line.isEmpty {
-                   let bulletLine = "\(bullet)\(line)\n"
-                   let attributedLine = NSAttributedString(string: bulletLine)
-                   attributedString.append(attributedLine)
-               }
-           }
-           if attributedString.length > 0 {
-               attributedString.deleteCharacters(in: NSRange(location: attributedString.length - 1, length: 1))
-           }
-           
-           return attributedString
-       }
     
 }

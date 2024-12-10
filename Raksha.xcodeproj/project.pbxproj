@@ -17,6 +17,7 @@
 		0026A2E72D01C47D002F689A /* SelfDefenceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026A2E62D01C47D002F689A /* SelfDefenceTVC.swift */; };
 		0026A2F62D01CAE7002F689A /* RightAndLawsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026A2F52D01CAE7002F689A /* RightAndLawsVC.swift */; };
 		0026A2F82D01CE55002F689A /* RightAndLawsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026A2F72D01CE55002F689A /* RightAndLawsTVC.swift */; };
+		0036FBC32D08736700DF8CB0 /* OtpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0036FBC22D08736700DF8CB0 /* OtpVC.swift */; };
 		004271D92D07F5D400FE7975 /* PillPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004271D82D07F5D400FE7975 /* PillPageControl.swift */; };
 		0046BD4C2CFEF0B100A1E822 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0046BD4B2CFEF0B100A1E822 /* Main.storyboard */; };
 		0046BD642CFF06A700A1E822 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0046BD632CFF06A700A1E822 /* MapKit.framework */; };
@@ -35,6 +36,8 @@
 		005E22112CFDE042006C2FFF /* WalkThroughVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E22102CFDE042006C2FFF /* WalkThroughVC.swift */; };
 		005E22132CFDE057006C2FFF /* WalkThroughCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E22122CFDE057006C2FFF /* WalkThroughCVC.swift */; };
 		005E222E2CFDEAE5006C2FFF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E222D2CFDEAE5006C2FFF /* LoginVC.swift */; };
+		00724A232D07FFC60004D6B6 /* success.gif in Resources */ = {isa = PBXBuildFile; fileRef = 00724A222D07FFC60004D6B6 /* success.gif */; };
+		00724A3E2D0826D10004D6B6 /* CountryPickerView in Frameworks */ = {isa = PBXBuildFile; productRef = 00724A3D2D0826D10004D6B6 /* CountryPickerView */; };
 		00743DD62D0179740044149A /* FriendListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00743DD52D0179740044149A /* FriendListVC.swift */; };
 		0098A6D02CFDDA180099A6E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0098A6CF2CFDDA180099A6E3 /* AppDelegate.swift */; };
 		0098A6D22CFDDA180099A6E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0098A6D12CFDDA180099A6E3 /* SceneDelegate.swift */; };
@@ -95,6 +98,7 @@
 		0026A2E62D01C47D002F689A /* SelfDefenceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfDefenceTVC.swift; sourceTree = "<group>"; };
 		0026A2F52D01CAE7002F689A /* RightAndLawsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightAndLawsVC.swift; sourceTree = "<group>"; };
 		0026A2F72D01CE55002F689A /* RightAndLawsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightAndLawsTVC.swift; sourceTree = "<group>"; };
+		0036FBC22D08736700DF8CB0 /* OtpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpVC.swift; sourceTree = "<group>"; };
 		004271D82D07F5D400FE7975 /* PillPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillPageControl.swift; sourceTree = "<group>"; };
 		0046BD4B2CFEF0B100A1E822 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0046BD632CFF06A700A1E822 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -113,6 +117,7 @@
 		005E22102CFDE042006C2FFF /* WalkThroughVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughVC.swift; sourceTree = "<group>"; };
 		005E22122CFDE057006C2FFF /* WalkThroughCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughCVC.swift; sourceTree = "<group>"; };
 		005E222D2CFDEAE5006C2FFF /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		00724A222D07FFC60004D6B6 /* success.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = success.gif; sourceTree = "<group>"; };
 		00743DD52D0179740044149A /* FriendListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListVC.swift; sourceTree = "<group>"; };
 		0098A6CC2CFDDA180099A6E3 /* Raksha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Raksha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0098A6CF2CFDDA180099A6E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +193,7 @@
 			files = (
 				0046BD642CFF06A700A1E822 /* MapKit.framework in Frameworks */,
 				03B284C3257B59F45ED5C34F /* Pods_Raksha.framework in Frameworks */,
+				00724A3E2D0826D10004D6B6 /* CountryPickerView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +247,14 @@
 				0026A2F72D01CE55002F689A /* RightAndLawsTVC.swift */,
 			);
 			path = RightLaws;
+			sourceTree = "<group>";
+		};
+		0036FBC12D08735300DF8CB0 /* OTP */ = {
+			isa = PBXGroup;
+			children = (
+				0036FBC22D08736700DF8CB0 /* OtpVC.swift */,
+			);
+			path = OTP;
 			sourceTree = "<group>";
 		};
 		00493DBB2D0076A5001A3187 /* Tips */ = {
@@ -353,6 +367,7 @@
 		0098A7032CFDDA7C0099A6E3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0036FBC12D08735300DF8CB0 /* OTP */,
 				00DF1B7C2D03279700F76D20 /* CommonPopUp */,
 				00BDDB1E2D01D88E004C458A /* FileComplaint */,
 				0026A2F42D01CAC1002F689A /* RightLaws */,
@@ -379,6 +394,7 @@
 		0098A7042CFDDA890099A6E3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				00724A222D07FFC60004D6B6 /* success.gif */,
 				0098A6DA2CFDDA190099A6E3 /* LaunchScreen.storyboard */,
 				0046BD4B2CFEF0B100A1E822 /* Main.storyboard */,
 			);
@@ -619,6 +635,9 @@
 			);
 			mainGroup = 0098A6C32CFDDA180099A6E3;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				00724A3C2D0826D10004D6B6 /* XCRemoteSwiftPackageReference "CountryPickerView" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0098A6CD2CFDDA180099A6E3 /* Products */;
 			projectDirPath = "";
@@ -643,6 +662,7 @@
 				00A3F7FC2D015B1000032DEA /* Roboto-MediumItalic.ttf in Resources */,
 				00A3F7FD2D015B1000032DEA /* Roboto-LightItalic.ttf in Resources */,
 				00A3F7FE2D015B1000032DEA /* Roboto-ThinItalic.ttf in Resources */,
+				00724A232D07FFC60004D6B6 /* success.gif in Resources */,
 				00A3F7FF2D015B1000032DEA /* Roboto-Italic.ttf in Resources */,
 				00A3F8002D015B1000032DEA /* Roboto-Light.ttf in Resources */,
 				00A3F8012D015B1000032DEA /* Roboto-BoldItalic.ttf in Resources */,
@@ -753,6 +773,7 @@
 				0009DB742D06BD6800E27A94 /* PopoverTVC.swift in Sources */,
 				00493DAE2D005D6A001A3187 /* FakeCallListTVC.swift in Sources */,
 				00B965572CFEDAE90074EDE8 /* HelpLineVC.swift in Sources */,
+				0036FBC32D08736700DF8CB0 /* OtpVC.swift in Sources */,
 				005E22112CFDE042006C2FFF /* WalkThroughVC.swift in Sources */,
 				00BDDB202D01D8AA004C458A /* FileComplaintVC.swift in Sources */,
 				00493DC42D008765001A3187 /* TrackUserList.swift in Sources */,
@@ -1101,6 +1122,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		00724A3C2D0826D10004D6B6 /* XCRemoteSwiftPackageReference "CountryPickerView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kizitonwose/CountryPickerView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		00724A3D2D0826D10004D6B6 /* CountryPickerView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00724A3C2D0826D10004D6B6 /* XCRemoteSwiftPackageReference "CountryPickerView" */;
+			productName = CountryPickerView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0098A6C42CFDDA180099A6E3 /* Project object */;
 }

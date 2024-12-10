@@ -7,7 +7,55 @@
 
 import Foundation
 import UIKit
+//MARK: - UIImageView
+extension UIImageView {
+    static func fromGif(frame: CGRect, resourceName: String) -> (UIImageView?, TimeInterval)? {
+        guard let path = Bundle.main.path(forResource: resourceName, ofType: "gif") else {
+            print("Gif does not exist at that path")
+            return nil
+        }
+        let url = URL(fileURLWithPath: path)
+        guard let gifData = try? Data(contentsOf: url),
+            let source = CGImageSourceCreateWithData(gifData as CFData, nil) else { return nil }
+        
+        var images = [UIImage]()
+        var totalDuration: TimeInterval = 0
+        
+        let imageCount = CGImageSourceGetCount(source)
+        for i in 0 ..< imageCount {
+            if let image = CGImageSourceCreateImageAtIndex(source, i, nil) {
+                images.append(UIImage(cgImage: image))
+                
+                // Get the duration of the frame
+                if let properties = CGImageSourceCopyPropertiesAtIndex(source, i, nil) as? [CFString: Any],
+                   let gifProperties = properties[kCGImagePropertyGIFDictionary] as? [CFString: Any],
+                   let delayTime = gifProperties[kCGImagePropertyGIFDelayTime] as? NSNumber {
+                    totalDuration += delayTime.doubleValue
+                }
+            }
+        }
+        
+        let gifImageView = UIImageView(frame: frame)
+        gifImageView.animationImages = images
+        gifImageView.animationRepeatCount = 1
+        gifImageView.startAnimating()
+        
+        // Pause GIF after 1 second
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            gifImageView.stopAnimating()
+            
+            // Set the last frame as the current image (pause effect)
+            if let lastFrame = images.last {
+                gifImageView.image = lastFrame
+            }
+        }
+        
+        return (gifImageView, totalDuration)  // Return both the UIImageView and the total duration
+    }
+}
+//MARK: - UIViewController
 extension UIViewController {
+    
     func DismissKeyboardOnTap() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false 
@@ -207,12 +255,7 @@ extension UIView{
     
    }
 
-
-
-extension UITextField {
-   
-}
-
+//MARK: - UIColor
 extension UIColor {
     convenience init(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -229,7 +272,7 @@ extension UIColor {
     }
       
 }
-
+//MARK: - CALayer
 extension CALayer {
     func toImage() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
@@ -276,6 +319,7 @@ extension UITextField {
         selectedTextRange = selection
     }
 }
+//MARK: - CustomSlide
 class CustomSlide: UISlider {
 
      @IBInspectable var trackHeight: CGFloat = 10
@@ -289,7 +333,7 @@ class CustomSlide: UISlider {
        }
 }
 
-
+//MARK: - UIView
 extension UIView {
     
     func addShadow(shadowColor: UIColor, offSet: CGSize, opacity: Float, shadowRadius: CGFloat, cornerRadius: CGFloat, corners: UIRectCorner, fillColor: UIColor = .white) {
@@ -308,8 +352,13 @@ extension UIView {
     }
 }
 
-
+//MARK: - String
 extension String {
+    func createBulletPointText() -> NSAttributedString {
+            let bullet = "• "
+            let formattedText = self.split(separator: "\n").map { "\(bullet)\($0)" }.joined(separator: "\n")
+            return NSAttributedString(string: formattedText)
+        }
     func width(withFont font: UIFont) -> CGFloat {
         let attributes = [NSAttributedString.Key.font: font]
         let size = (self as NSString).size(withAttributes: attributes)

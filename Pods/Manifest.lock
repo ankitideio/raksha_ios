@@ -98,11 +98,13 @@ PODS:
     - MDFTextAccessibility
   - MDFInternationalization (3.0.0)
   - MDFTextAccessibility (2.0.1)
+  - OTPFieldView (1.0.1)
   - TOCropViewController (2.7.4)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
   - MaterialComponents/TextFields
+  - OTPFieldView
   - TOCropViewController
 
 SPEC REPOS:
@@ -118,6 +120,7 @@ SPEC REPOS:
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
+    - OTPFieldView
     - TOCropViewController
 
 SPEC CHECKSUMS:
@@ -132,8 +135,9 @@ SPEC CHECKSUMS:
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
+  OTPFieldView: 700a752fe62c41d1c4914c78aa500fb30d97c255
   TOCropViewController: 80b8985ad794298fb69d3341de183f33d1853654
 
-PODFILE CHECKSUM: 725528076ae702a4a6dc288000f19f7952884644
+PODFILE CHECKSUM: 2424f3e288579ad9dc3cd454ad1687f60b0e403f
 
 COCOAPODS: 1.16.2

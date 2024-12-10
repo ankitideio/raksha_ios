@@ -24,22 +24,20 @@ class HomeVC: UIViewController {
     
     //MARK: - VARIABLES
     
-    let locationManager = CLLocationManager()
-    var currentZoomLevel: Double = 10000
-    var isZoomedIn: Bool = false
-    
+    private let locationManager = CLLocationManager()
+    private var currentZoomLevel: Double = 10000
+    private var isZoomedIn: Bool = false
+
     
     //MARK: - LIFE CYCLE METHOD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupMapView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("Will apear")
         if let tabBarController = self.tabBarController as? HomeTabBar {
             tabBarController.setMiddleButtonHidden(false)
         }
@@ -64,7 +62,8 @@ class HomeVC: UIViewController {
             tabBarController.setMiddleButtonHidden(true)
         }
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-        vc.callBack = {
+        vc.callBack = {[weak self] in
+            guard let self = self else { return }
             if let tabBarController = self.tabBarController as? HomeTabBar {
                 tabBarController.setMiddleButtonHidden(false)
             }
@@ -77,7 +76,8 @@ class HomeVC: UIViewController {
             tabBarController.setMiddleButtonHidden(true)
         }
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TipsVC") as! TipsVC
-        vc.callBack = {
+        vc.callBack = {[weak self] in
+            guard let self = self else { return }
             if let tabBarController = self.tabBarController as? HomeTabBar {
                 tabBarController.setMiddleButtonHidden(false)
             }
@@ -90,7 +90,8 @@ class HomeVC: UIViewController {
             tabBarController.setMiddleButtonHidden(true)
         }
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FriendListVC") as! FriendListVC
-        vc.callBack = {
+        vc.callBack = {[weak self] in
+            guard let self = self else { return }
             if let tabBarController = self.tabBarController as? HomeTabBar {
                 tabBarController.setMiddleButtonHidden(false)
             }
@@ -127,11 +128,12 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func actionTrackME(_ sender: UIButton) {
-        if let tabBarController = self.tabBarController as? HomeTabBar {
-            tabBarController.setMiddleButtonHidden(true)
-        }
+//        if let tabBarController = self.tabBarController as? HomeTabBar {
+//            tabBarController.setMiddleButtonHidden(true)
+//        }
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TrackMeVC") as! TrackMeVC
-        vc.callBack = {
+        vc.callBack = {[weak self] in
+            guard let self = self else { return }
             if let tabBarController = self.tabBarController as? HomeTabBar {
                 tabBarController.setMiddleButtonHidden(false)
             }

@@ -24,15 +24,22 @@ class RightAndLawsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DismissKeyboardOnTap()
-  
+        swipeLeft()
     }
-    
+    func swipeLeft(){
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+                  swipeRight.direction = .right
+                  view.addGestureRecognizer(swipeRight)
+    }
+    @objc func handleSwipe() {
+        SceneDelegate().tabBarHomeRoot()
+        callBack?()
+    }
     //MARK: - Action
     
     @IBAction func actionBack(_ sender: UIButton) {
+        SceneDelegate().tabBarHomeRoot()
         callBack?()
-        self.navigationController?.popViewController(animated: true)
-        
     }
     
 }
@@ -53,28 +60,8 @@ extension RightAndLawsVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RightAndLawsTVC", for: indexPath) as! RightAndLawsTVC
         let text =  arrLaws[indexPath.row]
-       
-        cell.lblDescription.attributedText = addDotToEachLine(text: text)
+        cell.lblDescription.attributedText = text.createBulletPointText()
         return cell
     }
-    func addDotToEachLine(text: String) -> NSAttributedString {
-           let lines = text.components(separatedBy: "\n")
-           let bullet = "• "
-           let attributedString = NSMutableAttributedString()
-           
-           for (index, line) in lines.enumerated() {
-               if !line.isEmpty {
-                   let bulletLine = "\(bullet)\(line)\n"
-                   let attributedLine = NSAttributedString(string: bulletLine)
-                   attributedString.append(attributedLine)
-               }
-           }
-           
-           if attributedString.length > 0 {
-               attributedString.deleteCharacters(in: NSRange(location: attributedString.length - 1, length: 1))
-           }
-           
-           return attributedString
-       }
     
 }

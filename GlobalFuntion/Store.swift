@@ -9,9 +9,6 @@ import Foundation
 import UIKit
 
 class Store {
-   
-   
-   
     class var authKey: String?{
         set{
             Store.saveValue(newValue, .authKey)
